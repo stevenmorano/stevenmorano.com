@@ -1,156 +1,97 @@
-"use client";
+import { siteContent, type ProjectItem } from "@/data/siteContent";
+import { ArrowUpRightIcon } from "./Icons";
+import ProjectVisual from "./ProjectVisuals";
+import SectionFrame from "./SectionFrame";
+import styles from "./Portfolio.module.css";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { Box, Home, Brain, CheckCircle2, Users, Target, ChevronRight } from "lucide-react";
-import { siteContent } from "@/data/siteContent";
-import { useMobileSafe } from "@/hooks/useMobileSafe";
-
-// Map project title to specific visual styles and icons
-const getProjectConfig = (title: string) => {
-  const t = title.toLowerCase();
-  if (t.includes("home") || t.includes("homebase")) {
-    return {
-      icon: Home,
-      color: "from-blue-500 to-indigo-500",
-      borderClass: "border-blue-500/15 hover:border-blue-500/35",
-      glowClass: "shadow-[0_0_15px_rgba(59,130,246,0.06)]",
-    };
-  } else if (t.includes("adhd") || t.includes("working from")) {
-    return {
-      icon: Brain,
-      color: "from-purple-500 to-pink-500",
-      borderClass: "border-purple-500/15 hover:border-purple-500/35",
-      glowClass: "shadow-[0_0_15px_rgba(168,85,247,0.06)]",
-    };
-  } else if (t.includes("follow through")) {
-    return {
-      icon: CheckCircle2,
-      color: "from-amber-500 to-orange-500",
-      borderClass: "border-amber-500/15 hover:border-amber-500/35",
-      glowClass: "shadow-[0_0_15px_rgba(245,158,11,0.06)]",
-    };
-  } else if (t.includes("school parent")) {
-    return {
-      icon: Users,
-      color: "from-cyan-500 to-blue-500",
-      borderClass: "border-cyan-500/15 hover:border-cyan-500/35",
-      glowClass: "shadow-[0_0_15px_rgba(6,182,212,0.06)]",
-    };
-  } else {
-    return {
-      icon: Target,
-      color: "from-emerald-500 to-teal-500",
-      borderClass: "border-emerald-500/15 hover:border-emerald-500/35",
-      glowClass: "shadow-[0_0_15px_rgba(16,185,129,0.06)]",
-    };
-  }
-};
-
-// Map status to visual badge styling
-const getStatusStyles = (status: string) => {
-  switch (status) {
-    case "Active":
-      return "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
-    case "Building":
-      return "bg-blue-500/10 text-blue-400 border-blue-500/20";
-    case "Rebuilding":
-      return "bg-purple-500/10 text-purple-400 border-purple-500/20";
-    case "Concept":
-    default:
-      return "bg-amber-500/10 text-amber-400 border-amber-500/20";
-  }
-};
+function ProjectText({ project }: { project: ProjectItem }) {
+  return (
+    <div className={styles.projectText}>
+      <div className={styles.projectMeta}>
+        <span>{project.eyebrow}</span>
+        <span>{project.status}</span>
+      </div>
+      <h3>{project.title}</h3>
+      <p>{project.description}</p>
+      <p className={styles.projectLearning}>{project.learning}</p>
+      <div className={styles.projectTags}>
+        {project.tags.map((tag) => (
+          <span key={tag}>{tag}</span>
+        ))}
+      </div>
+      {project.href ? (
+        <a
+          className={styles.projectLink}
+          href={project.href}
+          rel="noreferrer"
+          target="_blank"
+        >
+          View project
+          <span>
+            <ArrowUpRightIcon />
+          </span>
+        </a>
+      ) : null}
+    </div>
+  );
+}
 
 export default function Projects() {
-  const isMobileSafe = useMobileSafe();
-
-  // Flatten builds from siteContent ventures
-  const projectsList = siteContent.ventures.flatMap((v) =>
-    v.builds.map((b) => ({
-      title: b.title,
-      status: b.status,
-      description: b.description,
-      ...getProjectConfig(b.title),
-    }))
-  );
-
   return (
-    <section id="ventures" className="relative p-4 sm:p-10 lg:p-12 overflow-hidden">
-      <div className="relative z-10 w-full">
-        
-        {/* Section Header */}
-        <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/[0.05]">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-600/10 border border-purple-500/20 flex items-center justify-center text-purple-400 shrink-0">
-              <Box className="w-5 h-5" strokeWidth={1.5} />
-            </div>
-            <h2 className="font-display text-2xl font-bold text-white tracking-tight">
-              Selected Projects &amp; Experiments
-            </h2>
-          </div>
-        </div>
-
-        {/* Framing context (Proof of systems capability) */}
-        <p className="text-neutral-500 text-[13px] sm:text-xs md:text-sm mb-8 max-w-2xl leading-relaxed text-left">
-          Side projects and open-source applications built to experiment with new technologies, integrate custom APIs, and explore AI workflow automation tools.
+    <SectionFrame id="projects" label="Selected builds" number="03">
+      <div className={styles.sectionHeading}>
+        <p className={styles.eyebrow}>Ideas, made tangible</p>
+        <h2>
+          I learn by building
+          <br />
+          something useful.
+        </h2>
+        <p>
+          I am not presenting myself as a traditional software engineer. These
+          projects show product judgment, technical adaptability, persistence,
+          and what becomes possible when AI helps turn a bank of ideas into
+          working software.
         </p>
-
-        {/* Mobile Swipe Hint */}
-        <div className="lg:hidden flex items-center gap-2 mb-3.5 px-1 text-[12px] sm:text-[10px] font-bold text-purple-400 uppercase tracking-wider">
-          <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
-          <span>Swipe to see more projects &rarr;</span>
-        </div>
-
-        {/* Projects Layout (Responsive single mapping) */}
-        <div className="flex lg:grid lg:grid-cols-5 gap-4 lg:gap-5 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 px-2 snap-x snap-mandatory scrollbar-none lg:scrollbar-default">
-          {projectsList.map((project, idx) => {
-            const Icon = project.icon;
-            const statusStyle = getStatusStyles(project.status);
-            return (
-              <motion.div
-                key={project.title}
-                initial={isMobileSafe ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-                whileInView={isMobileSafe ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
-                viewport={isMobileSafe ? undefined : { once: true, margin: "-50px" }}
-                transition={isMobileSafe ? { duration: 0 } : { duration: 0.8, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                className="snap-start shrink-0 lg:shrink w-[86vw] sm:w-[80vw] sm:max-w-[320px] lg:w-auto lg:max-w-none p-[1px] rounded-2xl bg-gradient-to-b from-white/[0.06] to-transparent shadow-none lg:shadow-lg lg:hover:scale-[1.02] transition-all duration-300 flex"
-              >
-                <div className={`p-6 w-full bg-[#050508]/95 lg:bg-[#050508]/85 rounded-[calc(1.2rem-1px)] border ${project.borderClass} ${project.glowClass} flex flex-col justify-between min-h-[260px] lg:min-h-[300px] text-left transition-colors duration-300`}>
-                  <div>
-                    {/* Header: Status Badge + Circle Icon */}
-                    <div className="flex justify-between items-start mb-4 lg:mb-5">
-                      <span className={`px-2.5 py-1 rounded text-[12.5px] md:text-xs font-bold uppercase tracking-wider border ${statusStyle}`}>
-                        {project.status}
-                      </span>
-                      <div className="w-11 h-11 rounded-full bg-gradient-to-br from-neutral-800 to-neutral-900 border border-white/10 shadow-lg shadow-white/5 flex items-center justify-center shrink-0">
-                        <Icon className="w-5 h-5 text-white" strokeWidth={1.5} />
-                      </div>
-                    </div>
-
-                    <h3 className="font-display text-[16px] sm:text-base font-bold text-white tracking-tight leading-tight mb-2 group-hover:text-purple-400 transition-colors duration-350">
-                      {project.title}
-                    </h3>
-                    <p className="text-neutral-400 text-[14.5px] md:text-sm leading-relaxed font-sans font-medium">
-                      {project.description}
-                    </p>
-                  </div>
-
-                  {/* CTA link */}
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center gap-1.5 text-[13.5px] md:text-sm font-bold text-purple-400 hover:text-purple-300 transition-colors mt-4"
-                  >
-                    <span>Learn More</span>
-                    <ChevronRight className="w-3.5 h-3.5 text-purple-400" strokeWidth={1.5} />
-                  </a>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
       </div>
-    </section>
+
+      <div className={styles.featuredProjects}>
+        {siteContent.projects.featured.map((project, index) => (
+          <article
+            className={`${styles.featuredProject} ${
+              index % 2 === 1 ? styles.featuredProjectReverse : ""
+            }`}
+            key={project.title}
+          >
+            <div className={styles.projectVisualShell}>
+              <ProjectVisual title={project.title} visual={project.visual} />
+            </div>
+            <ProjectText project={project} />
+          </article>
+        ))}
+      </div>
+
+      <div className={styles.supportingHeader}>
+        <p className={styles.microLabel}>More useful experiments</p>
+        <a
+          href="https://github.com/stevenmorano"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Explore all public work
+          <ArrowUpRightIcon />
+        </a>
+      </div>
+
+      <div className={styles.supportingProjects}>
+        {siteContent.projects.supporting.map((project) => (
+          <article className={styles.supportingProjectShell} key={project.title}>
+            <div className={styles.supportingProject}>
+              <ProjectVisual title={project.title} visual={project.visual} />
+              <ProjectText project={project} />
+            </div>
+          </article>
+        ))}
+      </div>
+    </SectionFrame>
   );
 }

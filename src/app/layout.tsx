@@ -1,38 +1,79 @@
-import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Outfit } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Manrope, Newsreader } from "next/font/google";
 import "./globals.css";
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
   display: "swap",
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
   display: "swap",
 });
+
+const title = "Steven Morano | Marketing Operations Leader & AI-Savvy Builder";
+const description =
+  "Steven Morano is a New York marketing operations leader with 12+ years across growth, paid media, CRM, ecommerce, automation, and AI-assisted products.";
 
 export const metadata: Metadata = {
-  title: "Steven Morano | Marketing Operations & AI Systems Consultant",
-  description: "Westchester-based marketing operations and AI systems consultant specializing in CRM migrations, marketing automation, funnel optimization, paid acquisition, and custom AI workflows.",
-  keywords: ["Steven Morano", "Marketing Operations Consultant", "AI Systems Consultant", "Westchester Marketing Consultant", "Digital Marketing Consultant", "CRM Consultant", "Funnel Automation Consultant", "HubSpot Consultant", "Rye Brook NY", "Westchester NY"],
-  authors: [{ name: "Steven Morano" }],
+  metadataBase: new URL("https://stevenmorano.com"),
+  title,
+  description,
+  applicationName: "Steven Morano",
+  authors: [{ name: "Steven Morano", url: "https://stevenmorano.com" }],
   creator: "Steven Morano",
+  publisher: "Steven Morano",
+  category: "portfolio",
+  keywords: [
+    "Steven Morano",
+    "marketing operations leader",
+    "marketing director",
+    "marketing manager",
+    "AI marketing",
+    "marketing automation",
+    "CRM strategy",
+    "paid media",
+    "Rye Brook New York",
+    "Westchester marketing",
+  ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    type: "website",
+    type: "profile",
     locale: "en_US",
-    url: "https://stevenmorano.com",
-    title: "Steven Morano | Marketing Operations & AI Systems Consultant",
-    description: "Westchester-based marketing operations and AI systems consultant specializing in CRM migrations, marketing automation, funnel optimization, paid acquisition, and custom AI workflows.",
-    siteName: "Steven Morano Portfolio",
+    url: "/",
+    title,
+    description,
+    siteName: "Steven Morano",
+    firstName: "Steven",
+    lastName: "Morano",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Steven Morano | Marketing Operations & AI Systems Consultant",
-    description: "Westchester-based marketing operations and AI systems consultant specializing in CRM migrations, marketing automation, funnel optimization, paid acquisition, and custom AI workflows.",
+    title,
+    description,
+    creator: "@SteveMorano",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+};
+
+export const viewport: Viewport = {
+  colorScheme: "light",
+  themeColor: "#f1eee7",
 };
 
 export default function RootLayout({
@@ -42,15 +83,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
+      className={`${manrope.variable} ${newsreader.variable}`}
       lang="en"
-      className={`${plusJakarta.variable} ${outfit.variable} h-full scroll-smooth antialiased`}
-      suppressHydrationWarning
     >
-      <body className="min-h-full bg-bg-dark text-neutral-200 selection:bg-purple-500/30 selection:text-purple-200 relative">
-        {/* Subtle physical texture overlay */}
-        <div className="noise-overlay" />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

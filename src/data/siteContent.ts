@@ -1,232 +1,313 @@
-export interface WhatIDoItem {
+export type NavigationItem = {
+  label: string;
+  href: string;
+};
+
+export type ProofPoint = {
+  value: string;
+  label: string;
+  context: string;
+};
+
+export type Capability = {
+  number: string;
   title: string;
   description: string;
-  icon: string;
-  bulletPoints: string[];
-}
+};
 
-export interface VentureBuild {
-  title: string;
-  status: "Active" | "Building" | "Concept" | "Rebuilding";
-  description: string;
-  link?: string;
-}
-
-export interface VentureItem {
-  title: string;
-  status: "Active" | "Building" | "Concept" | "Rebuilding" | "Coming Soon";
-  description: string;
-  builds: VentureBuild[];
-}
-
-export interface WorkExperienceItem {
+export type ExperienceItem = {
   company: string;
   role: string;
   period: string;
-  location: string;
   summary: string;
-}
+  highlight?: string;
+};
 
-export interface StackCategory {
-  name: string;
-  items: string[];
-}
+export type ProjectVisual =
+  | "home-system"
+  | "mindful-eating"
+  | "threads-flow"
+  | "floorplan"
+  | "chatgpt-tool"
+  | "frame-preview";
 
-export interface SiteContent {
-  personalInfo: {
-    name: string;
-    location: string;
-    title: string;
-    tagline: string;
-    coreMessage: string;
-    subheadline: string;
-  };
-  navigation: { label: string; href: string }[];
-  about: {
-    paragraphs: string[];
-  };
-  whatIDo: WhatIDoItem[];
-  ventures: VentureItem[];
-  workExperience: WorkExperienceItem[];
-  digitalStack: StackCategory[];
-  contact: {
-    ctaText: string;
-    email: string;
-    linkedin: string;
-    github: string;
-    twitter?: string;
-    travelBlog?: string;
-    bookingLink: string;
-  };
-}
+export type ProjectItem = {
+  title: string;
+  eyebrow: string;
+  status: string;
+  description: string;
+  learning: string;
+  tags: string[];
+  visual: ProjectVisual;
+  href?: string;
+};
 
-export const siteContent: SiteContent = {
-  personalInfo: {
+export type ProfileLink = {
+  label: string;
+  description: string;
+  href: string;
+  external?: boolean;
+};
+
+export const siteContent = {
+  identity: {
     name: "Steven Morano",
-    location: "Rye Brook, NY",
-    title: "Marketing Operations & AI Systems Consultant",
-    tagline: "Marketing Operations & AI Systems Consultant",
-    coreMessage: "I help businesses clean up CRM systems, optimize acquisition funnels, and build automated workflows.",
-    subheadline: "I help businesses clean up CRM systems, improve funnels, automate workflows, and use AI practically across campaigns, CRM, content, reporting, and operations."
+    location: "Rye Brook, New York",
+    availability: "Open to remote and hybrid marketing leadership roles",
+    headline: "Marketing operations leader who makes complex systems work.",
+    introduction:
+      "I have spent 12+ years building marketing programs, growth systems, customer journeys, and high-performing teams. I combine that experience with deep technical curiosity - using AI, automation, and software to turn messy problems into useful systems.",
+    signature: "Marketing first. Technically fluent. Constantly building.",
+    email: "steven@stevenmorano.com",
+    portrait: "/images/steven-morano.png",
   },
   navigation: [
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#what-i-do" },
     { label: "Experience", href: "#experience" },
-    { label: "Projects", href: "#ventures" },
-    { label: "Stack", href: "#stack" },
-    { label: "Contact", href: "#contact" }
-  ],
-  about: {
-    paragraphs: [
-      "I’m Steven Morano, a Westchester marketing consultant specializing in marketing operations and AI systems. I have spent over a decade working as a digital marketing consultant, scaling paid media budgets, designing CRM architectures, and building automation funnels.",
-      "As a dedicated CRM, funnel, and marketing automation consultant, my core focus is walking into complex, scattered setups and turning them into automated, clean engines that make lead flow, operations, and tracking highly efficient.",
-      "I also build custom web applications and automate operations utilizing modern frameworks like React, Next.js, and API integrations. This technical building capability allows me to bridge the gap between high-level growth marketing strategy and developer-level execution."
-    ]
-  },
-  whatIDo: [
+    { label: "Projects", href: "#projects" },
+    { label: "About", href: "#about" },
+    { label: "Connect", href: "#connect" },
+  ] satisfies NavigationItem[],
+  proof: [
     {
-      title: "Marketing Operations Consulting",
-      description: "Auditing, designing, and rebuilding CRM, lead flow, and follow-up architectures to stop qualified leads from slipping through the cracks.",
-      icon: "Megaphone",
-      bulletPoints: ["CRM Migrations & Audits", "Lead Flow & Nurturing Flows", "Lifecycle Marketing", "HubSpot & GoHighLevel Setup"]
+      value: "12+",
+      label: "Years in marketing",
+      context: "Operations, growth, paid acquisition, ecommerce, and lifecycle.",
     },
     {
-      title: "Paid Media & Growth Strategy",
-      description: "Data-driven campaign structures and management to scale customer acquisition, reduce CAC, and maximize return on ad spend.",
-      icon: "Target",
-      bulletPoints: ["Direct-Response Campaigns", "Meta, Google, & TikTok Ads", "Attribution & ROI Tracking", "Landing Page Strategy"]
+      value: "$6M",
+      label: "Annual media responsibility",
+      context: "Managed across ecommerce and consumer-product accounts.",
     },
     {
-      title: "AI Workflow Consulting",
-      description: "Designing and deploying custom AI workflows, prompts, and automations to accelerate business operations and content output.",
-      icon: "Zap",
-      bulletPoints: ["Content & Research Workflows", "SOP Automation Scripts", "Time-Saving Audits", "Practical Team Onboarding"]
+      value: "75%",
+      label: "Lead growth",
+      context: "Delivered through stronger funnels, messaging, and follow-up.",
     },
     {
-      title: "Marketing Tech & Analytics",
-      description: "Establishing rock-solid web tracking, custom dashboards, and data pipelines to ensure every marketing dollar is measurable.",
-      icon: "Layers",
-      bulletPoints: ["GA4 & Google Tag Manager", "Looker Studio Dashboards", "Conversion API Integrations", "Database Optimizations"]
-    }
-  ],
-  ventures: [
+      value: "150%",
+      label: "Enrollment growth",
+      context: "Created by improving the full acquisition journey.",
+    },
+  ] satisfies ProofPoint[],
+  capabilities: [
     {
-      title: "Marketing Ops Consulting",
-      status: "Active",
-      description: "Operational consulting and tech stack optimization for small and medium businesses.",
-      builds: [
-        {
-          title: "Marketing Systems Consulting",
-          status: "Active",
-          description: "Helping small businesses fix messy funnels, CRM chaos, lead tracking, and campaign workflows."
-        }
-      ]
+      number: "01",
+      title: "Marketing operations",
+      description:
+        "CRM architecture, lifecycle automation, lead management, reporting, customer journeys, and the operating rhythm that keeps marketing and sales aligned.",
     },
     {
-      title: "Home Maintenance Software",
-      status: "Coming Soon",
-      description: "Manage your home like a professional asset. Preventative logs and projects in one place.",
-      builds: [
-        {
-          title: "HomeBase / Home Maintenance App",
-          status: "Building",
-          description: "A homeowner management app built in React/Next.js to track preventative logs, boilers, roofs, gutters, and recurring projects."
-        }
-      ]
+      number: "02",
+      title: "Growth and acquisition",
+      description:
+        "Paid media, funnels, landing pages, ecommerce, creative testing, conversion strategy, and the analysis required to put budget behind what works.",
     },
     {
-      title: "Organization & Productivity",
-      status: "Coming Soon",
-      description: "Digital templates and organization setups built for neurodivergent professionals.",
-      builds: [
-        {
-          title: "Working From Home With ADHD",
-          status: "Rebuilding",
-          description: "Templates, calendars, task systems, and focus structures designed to simplify work-from-home execution."
-        }
-      ]
+      number: "03",
+      title: "AI and practical systems",
+      description:
+        "Research, workflow design, rapid prototyping, lightweight apps, and a willingness to learn whatever software is needed to solve the real problem.",
     },
-    {
-      title: "Apps & Experiments",
-      status: "Active",
-      description: "Custom tools, accountability apps, and niche workflow scripts listed on GitHub.",
-      builds: [
-        {
-          title: "Follow Through",
-          status: "Concept",
-          description: "A friend-based accountability app concept for challenges, goals, and daily progress."
-        },
-        {
-          title: "Unified School Parent App",
-          status: "Concept",
-          description: "A parent dashboard concept combining school communications, event schedules, and updates."
-        }
-      ]
-    }
-  ],
-  workExperience: [
+  ] satisfies Capability[],
+  experience: [
     {
       company: "Smart Marketing Digital",
-      role: "Freelance Marketing Operations Consultant",
-      period: "January 2024 - Present",
-      location: "Rye, NY",
-      summary: "Leading marketing operations consulting, paid media (PPC/SEO), and CRM migrations (HubSpot, ActiveCampaign) to rebuild sales workflows and optimize funnel velocity for SMB clients."
+      role: "Independent Marketing Operations Consultant",
+      period: "2024 - Present",
+      summary:
+        "A small independent practice for select client engagements involving marketing strategy, CRM, automation, websites, paid acquisition, and analytics. It also gives me a practical environment for testing new AI-assisted workflows.",
     },
     {
       company: "Above Ave",
       role: "Director of Marketing Operations",
-      period: "January 2022 - December 2023",
-      location: "Remote",
-      summary: "Owned multi-channel demand-gen campaigns and HubSpot integrations, leading a team to drive a 75% increase in lead generation, a 150% boost in course enrollments, and a 50% reduction in sales cycles."
+      period: "2022 - 2023",
+      summary:
+        "Led strategy and operations for an online education and consulting company, connecting paid media, lifecycle campaigns, CRM systems, webinars, content, and sales follow-up into a more accountable growth engine.",
+      highlight:
+        "75% more leads, 150% more enrollments, 100% revenue growth, and a 50% shorter sales cycle.",
     },
     {
       company: "Soul Ahimsa",
-      role: "E-commerce Founder",
-      period: "January 2020 - June 2022",
-      location: "Rye, NY",
-      summary: "Launched and scaled an e-commerce brand, managing end-to-end storefront operations, inventory, and paid social acquisition (Shopify, Facebook/Instagram Ads) for steady customer retention."
+      role: "Founder, Ecommerce & Digital Marketing",
+      period: "2020 - 2022",
+      summary:
+        "Built and operated a direct-to-consumer brand from the storefront outward: positioning, Shopify, acquisition, photography, creative, email, customer communication, inventory, and fulfillment.",
     },
     {
-      company: "Basis",
+      company: "BASIS",
       role: "Senior Media Buyer",
-      period: "June 2017 - December 2019",
-      location: "Norwalk, CT / San Diego, CA",
-      summary: "Managed a $6M annual paid media budget (Google, Facebook, Instagram, LinkedIn, TikTok), delivering a 30% increase in campaign ROI and a 50% growth in qualified leads (MQLs)."
+      period: "2017 - 2019",
+      summary:
+        "Managed multichannel acquisition across Google, Meta, YouTube, Amazon, TikTok, Pinterest, and other platforms for ecommerce and consumer brands.",
+      highlight:
+        "Up to $6M in annual media responsibility, 30% higher marketing ROI, and 50% growth in qualified leads.",
     },
     {
-      company: "Digital Chair, Inc.",
-      role: "Digital Marketing / Sales",
-      period: "May 2014 - December 2016",
-      location: "Rye, NY",
-      summary: "Led and optimized paid search (PPC), SEO, and content campaigns to substantially boost search visibility, conversion rates, and client ROI."
-    }
-  ],
-  digitalStack: [
-    {
-      name: "Marketing & Paid Media",
-      items: ["Meta Ads", "Google Ads", "TikTok Ads", "YouTube Ads", "LinkedIn Ads", "Snapchat Ads", "Pinterest Ads"]
+      company: "Digital Chair",
+      role: "Digital Marketing & Sales",
+      period: "2014 - 2016",
+      summary:
+        "Helped local and small businesses improve paid search, SEO, content, websites, social media, lead generation, and the connection between marketing recommendations and client goals.",
     },
-    {
-      name: "CRM & Automation",
-      items: ["HubSpot", "goHighLevel", "ActiveCampaign", "Salesforce", "Zapier", "Make", "Asana", "ClickUp", "Monday.com"]
+  ] satisfies ExperienceItem[],
+  projects: {
+    featured: [
+      {
+        title: "Home Management",
+        eyebrow: "Primary build",
+        status: "Private - In development",
+        description:
+          "A home operating system for the maintenance, documents, equipment, recurring tasks, projects, and decisions that normally live across reminders, folders, and memory.",
+        learning:
+          "My largest product build - and the clearest example of how I take a complicated real-life system, map it, and turn it into software people can actually use.",
+        tags: ["Product systems", "TypeScript", "AI-assisted development"],
+        visual: "home-system",
+      },
+      {
+        title: "Mindful Eating",
+        eyebrow: "Second major build",
+        status: "Private - Active build",
+        description:
+          "A mobile-first craving-pause app that creates five useful minutes between an impulse and a decision through guided distractions, breathing, timers, and progress tracking.",
+        learning:
+          "Built to explore behavior design, mobile UX, local-first data, accessibility, gamification, and the difficult balance between helpful friction and user trust.",
+        tags: ["React", "Behavior design", "Mobile-first"],
+        visual: "mindful-eating",
+      },
+    ] satisfies ProjectItem[],
+    supporting: [
+      {
+        title: "Threads Content Engine",
+        eyebrow: "Marketing + AI",
+        status: "Public project",
+        description:
+          "An AI-assisted research and drafting workflow for Threads with a deliberate human approval step before anything is published.",
+        learning:
+          "A practical experiment in faster content operations without giving up judgment, voice, or quality control.",
+        tags: ["TypeScript", "Human-in-the-loop", "Content systems"],
+        visual: "threads-flow",
+        href: "https://github.com/stevenmorano/threads-content-engine",
+      },
+      {
+        title: "Floorplan Digitizer",
+        eyebrow: "Browser-native CAD",
+        status: "Public project",
+        description:
+          "A browser tool for tracing floorplans manually or with Gemini vision, including scaling, grid snapping, room blocks, and undo/redo.",
+        learning:
+          "Proof that I can learn a complex interaction model, break it into systems, and ship a working technical prototype.",
+        tags: ["React", "Gemini", "Canvas tools"],
+        visual: "floorplan",
+        href: "https://github.com/stevenmorano/floorplan-digitizer",
+      },
+      {
+        title: "ChatGPT History Tool",
+        eyebrow: "Small friction, solved",
+        status: "Public Chrome extension",
+        description:
+          "A local-first extension for searching, filtering, and bulk-managing a large ChatGPT conversation history without sending private metadata elsewhere.",
+        learning:
+          "A focused utility born from a repetitive personal problem - the kind of small software fix I enjoy making.",
+        tags: ["JavaScript", "Chrome extension", "Local-first"],
+        visual: "chatgpt-tool",
+        href: "https://github.com/stevenmorano/ce-chatgpt-bulk-delete",
+      },
+      {
+        title: "Print Frame Visualizer",
+        eyebrow: "Useful visual tool",
+        status: "Public project",
+        description:
+          "A private, local-first way to preview print, mat, and frame combinations accurately before spending money on a finished piece.",
+        learning:
+          "An exercise in translating physical measurements, taste, and purchasing uncertainty into a simple visual interface.",
+        tags: ["TypeScript", "Local-first", "Visualization"],
+        visual: "frame-preview",
+        href: "https://github.com/stevenmorano/print-frame-visualizer",
+      },
+    ] satisfies ProjectItem[],
+  },
+  about: {
+    lead:
+      "Give me a few days with a piece of software and I will know it inside out.",
+    paragraphs: [
+      "That has been the through-line in my career. I started in design engineering, became the person coworkers came to for software and computer problems, moved into digital marketing, and eventually found marketing operations - the place where strategy, technology, process, and people all have to work together.",
+      "AI changed what I could do with a long-running bank of ideas. I am still a marketer, not a traditional software engineer. But I can now research, prototype, test, and build useful tools much faster - while bringing the business judgment to know what should be built in the first place.",
+      "I like fixing the thing behind the thing: the CRM nobody trusts, the follow-up process that loses good leads, the software people work around, or the everyday problem that should have a better tool.",
+    ],
+    origin: {
+      title: "An engineering foundation",
+      description:
+        "Before marketing, I designed complex mechanical systems at Bolt Technology and worked across engineering, manufacturing, software, IT, and business leadership. That background still shapes how I think: understand the system, find the constraint, and make it work better.",
     },
-    {
-      name: "Analytics & Tracking",
-      items: ["GA4", "Google Tag Manager", "Looker Studio", "Conversion APIs", "Hyros", "Pixel Tracking"]
+    community: {
+      title: "Community building",
+      description:
+        "I run ADHD Working From Home, a developing private community focused on digital organization, personal finance, practical AI tools, and accountability for adults who feel overwhelmed by the systems of everyday life.",
+      href: "https://www.skool.com/working-from-home-with-adhd-7671/",
     },
-    {
-      name: "Web, Ecommerce & AI Tools",
-      items: ["React", "Next.js", "Shopify", "WordPress", "OpenAI API", "Anthropic Claude", "GitHub", "Vercel", "HTML/CSS", "JavaScript"]
-    }
-  ],
-  contact: {
-    ctaText: "Have a project, business, CRM system, or workflow that needs sorting out? Reach out.",
-    email: "steven@stevenmorano.com",
-    linkedin: "https://www.linkedin.com/in/stevenmorano/",
-    github: "https://github.com/stevenmorano",
-    twitter: "https://x.com/SteveMorano",
-    travelBlog: "https://travelingsteven.wordpress.com/",
-    bookingLink: "#"
-  }
-};
+    interests: [
+      "World travel",
+      "Skiing",
+      "Backpacking",
+      "Sailing",
+      "Cycling",
+      "Photography",
+      "Custom PCs",
+      "Personal finance",
+      "Digital organization",
+    ],
+  },
+  links: {
+    primary: [
+      {
+        label: "LinkedIn",
+        description: "Career, experience, and professional updates",
+        href: "https://www.linkedin.com/in/stevenmorano/",
+        external: true,
+      },
+      {
+        label: "GitHub",
+        description: "Public applications, extensions, and experiments",
+        href: "https://github.com/stevenmorano",
+        external: true,
+      },
+      {
+        label: "X / Twitter",
+        description: "Technology, marketing, AI, and whatever I am learning",
+        href: "https://x.com/SteveMorano",
+        external: true,
+      },
+      {
+        label: "Email",
+        description: "The simplest way to reach me directly",
+        href: "mailto:steven@stevenmorano.com",
+      },
+    ] satisfies ProfileLink[],
+    elsewhere: [
+      {
+        label: "Smart Marketing Digital",
+        description: "Independent marketing consulting practice",
+        href: "https://smart.stevenmorano.com",
+        external: true,
+      },
+      {
+        label: "ADHD Working From Home",
+        description: "Organization, finances, practical AI, and accountability",
+        href: "https://www.skool.com/working-from-home-with-adhd-7671/",
+        external: true,
+      },
+      {
+        label: "Steve Labs",
+        description: "A separate home for more experimental technology work",
+        href: "https://github.com/stevenmorano/steve-labs-1",
+        external: true,
+      },
+      {
+        label: "Travel Archive",
+        description: "Stories from a long solo trip through Southeast Asia and beyond",
+        href: "https://travelingsteven.wordpress.com/",
+        external: true,
+      },
+    ] satisfies ProfileLink[],
+  },
+} as const;

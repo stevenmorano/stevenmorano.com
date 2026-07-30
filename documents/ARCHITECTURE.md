@@ -1,93 +1,111 @@
-# System Architecture & Technical Specifications
+# Architecture
 
-This document outlines the technical design, component hierarchy, performance optimizations, and design system constraints implemented in Steven Morano's personal consulting website.
+## Rendering model
 
----
-
-## 🏗️ Next.js Rendering Architecture
-
-The website leverages Next.js App Router and React Server Components (RSC) to minimize client-side JavaScript execution, optimizing the hydration cycle and initial page load speed.
+The site is a statically generated Next.js App Router page. All current page components are React Server Components, so the content and navigation do not depend on client hydration.
 
 ```mermaid
-graph TD
-    subgraph Server Components (Build Time)
-        page["page.tsx (Static Route '/')"]
-        layout["layout.tsx (Global Wrapper)"]
-        contact["Contact.tsx (RSC Component)"]
-        footer["Footer.tsx (RSC Component)"]
-    end
-
-    subgraph Client Components (Hydrated)
-        navbar["Navbar.tsx (State & Scroll Listeners)"]
-        hero["Hero.tsx (Framer Motion Entrance)"]
-        about["About.tsx (Framer Motion & Local Expand State)"]
-        whatido["WhatIDo.tsx (Framer Motion & Bento Grid)"]
-        experience["Experience.tsx (Local Accordion State)"]
-        stack["Stack.tsx (Local Filter State)"]
-        projects["Projects.tsx (Framer Motion & Carousel)"]
-    end
-
-    layout --> page
-    page --> navbar
-    page --> hero
-    page --> about
-    page --> whatido
-    page --> experience
-    page --> stack
-    page --> projects
-    page --> contact
-    page --> footer
+flowchart TD
+    Layout["layout.tsx\nfonts + metadata"] --> Page["page.tsx\nhomepage + JSON-LD"]
+    Page --> Navigation
+    Page --> Hero
+    Page --> Proof
+    Page --> Experience
+    Page --> Projects
+    Page --> About
+    Page --> Connect
+    Page --> Footer
+    Projects --> ProjectVisuals
+    Content["siteContent.ts"] --> Hero
+    Content --> Proof
+    Content --> Experience
+    Content --> Projects
+    Content --> About
+    Content --> Connect
 ```
 
-### Component Breakdown
-- **Server Components (Default)**: Components like [Contact.tsx](file:///d:/AntigravityWorkspaces/stevenmoranocom/src/components/Contact.tsx) and [Footer.tsx](file:///d:/AntigravityWorkspaces/stevenmoranocom/src/components/Footer.tsx) do not contain client-only hooks (`useState`, `useEffect`) or event listeners. By removing `"use client"`, they compile to raw static HTML/CSS, reducing the client-side JavaScript payload.
-- **Client Components**: Added `"use client"` only where dynamic state (expanding lists in `Experience.tsx`/`Stack.tsx`/`About.tsx`), scroll listeners (`Navbar.tsx`), or hardware-accelerated animations (`Hero.tsx`/`Projects.tsx`) are required.
+Ordinary anchor links provide reliable section navigation. On smaller screens, the fixed navigation becomes a compact numbered index that mirrors the numbered section rail.
 
----
+## Content model
 
-## 🎨 Design System & Layout Constraints
+[`src/data/siteContent.ts`](../src/data/siteContent.ts) is the canonical source for:
 
-All layouts strictly enforce the **Double-Bezel (Doppelrand) UI pattern** to create soft visual depth.
+- Identity, location, availability, and positioning
+- Career evidence and capabilities
+- Work history
+- Featured and supporting projects
+- Personal story, interests, and community
+- Professional and secondary links
 
-### Double-Bezel Architecture
-Concentric containers are structured as follows to ensure radius spacing scales proportionally:
-- **Outer Shell Bezel**:
-  - CSS: `bg-white/[0.01] border border-white/[0.05] p-1.5 rounded-[2rem]` (translates to 32px outer corner radius). On mobile viewports, the radius is slightly tighter (`rounded-[2rem] md:rounded-[2.2rem]`) to match smaller screen ratios.
-- **Inner Core Content**:
-  - CSS: `bg-[#07070a] border border-white/[0.03] p-8 rounded-[calc(2rem-6px)]` (translates to 26px inner corner radius, matching the padding offset).
-- **Spacing Principle**: Inner Radius = `Outer Radius - Padding` to prevent corner distortion.
-- **Mobile Adjustments**: Card container margins are reduced from `p-5` to `p-4` on mobile viewports to increase content width. Inside the Contact CTA card, the inner padding is set to `p-6` on mobile.
+Layout components should not introduce unsupported claims. Private projects can be described, but private source URLs and internal data must remain private.
 
-### Screen Optimization & Grid Containment
-- **Wrapper Constraint**: The main wrapper container is set to `max-w-6xl` (1152px) on desktop with `px-6` padding. On mobile, outer horizontal margins are tightened to **`px-3` (12px)** to maximize active layout width on narrow devices like the iPhone 14 Pro Max.
-- **Typography Scale**:
-  - **Desktop**: Base text scales to `text-xs md:text-sm`, and headings scale to `text-sm md:text-base` within cards.
-  - **Mobile-First Readability**: Body text scales up to ~15.5px, card descriptions to ~14.5px, and metadata labels/technology chips to ~13.5px to maintain clean, screen-reader-compliant scanning without eye strain.
+## Design system
 
----
+The aesthetic is "editorial field notes":
 
-## 🚀 Performance Optimizations
+- Warm paper background
+- Deep ink text and selected dark panels
+- Restrained signal-orange accent
+- Newsreader for expressive editorial type
+- Manrope for interface and body text
+- Thin rules, numbered section rails, and restrained concentric borders
+- A real portrait and real project screenshots where public or available
 
-### IntersectionObserver Scroll Spy & Throttled Scroll Listener
-To completely eliminate layout thrashing and scrolling lag (scroll-spy jank) caused by reading layout properties (`offsetTop` and `offsetHeight`) during rapid scroll events:
-1. **Intersection Detection**: We utilize a native browser `IntersectionObserver` configured with a custom trigger viewport margin (`rootMargin: "-150px 0px -50% 0px"`) to track exactly when sections enter the upper-middle portion of the screen.
-2. **Scroll Lock Ref**: To prevent the active nav highlight from jumping between links during smooth scrolling animations, clicking a link triggers a manual scroll-lock state (`isManualScrolling` ref). The lock is released only after the scroll animation settles (via a scroll-end debounce).
-3. **Throttled Scroll Listener**: A passive window scroll listener registered with `{ passive: true }` and throttled via `window.requestAnimationFrame` is maintained to toggle the sticky navbar background (`scrolled` state) and handle absolute top/bottom edge cases (forcing `#contact` highlight when at the absolute bottom of the page, and clearing highlights when at the top hero).
+The numbered section rail is the visual through-line. It should remain coherent when sections are reordered or added.
 
-### GPU-Accelerated CSS Transitions
-- **Animation Layers**: Framer Motion animations in `Hero.tsx`, `Projects.tsx`, and `WhatIDo.tsx` are strictly limited to `opacity` and `y` (vertical transforms).
-- **Compositing**: By avoiding animation of layout triggers (like `width`, `height`, `margin`, or `top`), layout shifts are calculated directly on the GPU composite thread, avoiding layout calculations on the browser main thread.
+The responsive layout is defined in [`src/components/Portfolio.module.css`](../src/components/Portfolio.module.css). Major breakpoints are:
 
-### Mobile Safari (iOS) Performance Hardening
-Mobile Safari uses a single-threaded WebKit rendering engine that is highly sensitive to CPU-heavy SVG filter processing and composition-heavy backdrop filters combined with active animations. To secure 60 FPS scrolling and instantaneous page loading on iPhones:
-1. **Dynamic Animation Bypass**: A custom hook ([useMobileSafe.ts](file:///d:/AntigravityWorkspaces/stevenmoranocom/src/hooks/useMobileSafe.ts)) checks if the client is on a mobile platform (or has requested reduced motion). If true, it changes Framer Motion component props to a static visible state (`initial={{ opacity: 1, y: 0 }}`, `whileInView={{ opacity: 1, y: 0 }}`) immediately upon load, bypassing all scroll-spy rendering queues.
-2. **Desktop-Only SVG Noise**: The fixed global background noise overlay uses an SVG turbulence filter. To prevent WebKit from re-rendering this filter on every scroll event, the rule is wrapped in a `@media (min-width: 1024px)` block in CSS, keeping mobile frames light.
-3. **Optimized Backdrop Filtering**: Backdrop-blur filters on massive outer panels (`page.tsx`) and card backgrounds (`Experience.tsx` and `Navbar.tsx` mobile panels) are disabled on mobile by using responsive classes (e.g. `bg-[#050508] md:bg-[#050508]/60 md:backdrop-blur-md`). The solid opaque backdrop eliminates composite layer building overhead on WebKit.
+- `980px`: desktop navigation becomes the numbered index; complex grids simplify.
+- `767px`: the hero and project layouts stack for phones.
+- `390px`: the brand label collapses to the SM mark to preserve navigation space.
 
----
+Animations are CSS-only, limited to opacity and transform, and disabled when `prefers-reduced-motion` is enabled.
 
-## 🔍 Search Engine Optimization (SEO)
+## Assets
 
-- **Dynamic Sitemap & Robots**: Dynamic sitemaps (`/sitemap.xml`) and robots directives (`/robots.txt`) are compiled automatically during builds via Next.js App Router metadata handlers ([sitemap.ts](file:///d:/AntigravityWorkspaces/stevenmoranocom/src/app/sitemap.ts) and [robots.ts](file:///d:/AntigravityWorkspaces/stevenmoranocom/src/app/robots.ts)).
-- **Outline Hierarchy**: Headings are strictly linear. There is a single `<h1>` on the page (Hero title), and all major sections start with an `<h2>` heading. Subheading metadata elements within sections (like work roles) use `<h3>` tags to avoid outline gaps.
-- **Semantic HTML5**: Code uses semantic structural sections (`<main>`, `<section>`, `<header>`, `<footer>`, `<nav>`, `<article>`) to make indexing highly organized for crawlers.
+- Portrait: `public/images/steven-morano.png`
+- Project screenshots: `public/projects/`
+- Home Management is represented by a clearly labeled interface concept because the private product did not have a publishable screenshot available.
+
+Never present a concept visual as a live product screenshot.
+
+## SEO architecture
+
+[`src/app/layout.tsx`](../src/app/layout.tsx) defines:
+
+- Canonical URL
+- Descriptive title and summary
+- Open Graph and X/Twitter metadata
+- Index/follow directives
+- Author and publisher information
+
+[`src/app/page.tsx`](../src/app/page.tsx) emits a Schema.org graph for `WebSite`, `ProfilePage`, and `Person`, including Steven's public professional profiles.
+
+Static metadata routes provide:
+
+- `/robots.txt`
+- `/sitemap.xml`
+- `/manifest.webmanifest`
+- `/icon.svg`
+- `/opengraph-image`
+
+## Performance
+
+- Static generation for every current route
+- No Framer Motion or icon-library runtime
+- Optimized local images through `next/image`
+- Self-hosted font files generated by `next/font` at build time
+- No forms, analytics SDKs, databases, or third-party embeds
+- Minimal animation and a reduced-motion fallback
+
+## Validation requirements
+
+Every code change must pass:
+
+```bash
+npm run lint
+npx tsc --noEmit
+npm run build
+```
+
+Responsive visual review should cover at least 390px, 768px, and a standard desktop viewport.

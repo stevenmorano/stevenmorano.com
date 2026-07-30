@@ -1,41 +1,51 @@
-# ANTIGRAVITY.md — Developer Guidelines & Reference
+# Antigravity / Codex project guide
 
-This guide helps Antigravity and developers build on, maintain, and check the code in this repository.
+This repository contains Steven Morano's personal reputation, career, and project portfolio.
 
-## 🚀 Commands Reference
+## Commands
 
-- **Development Server**: `npm run dev` (Runs on port `3001` in this workspace)
-- **Compile Production Build**: `npm run build`
-- **Lint Code**: `npm run lint` (runs `eslint`)
+```bash
+npm run dev
+npm run lint
+npx tsc --noEmit
+npm run build
+```
 
----
+## Product direction
 
-## 🎨 Architectural Design Rules (Awwwards-Tier)
+- This is a personal site, not the Smart Marketing Digital sales site.
+- Lead with marketing operations, leadership, growth, and execution.
+- Use AI and software projects to demonstrate technical fluency and practical problem-solving.
+- Keep consulting, the ADHD community, Steve Labs, and the travel archive as secondary parts of Steven's broader story.
+- Do not add sales-call booking as the primary action.
+- Never invent metrics, clients, testimonials, dashboards, or product functionality.
 
-All subsequent visual updates or page additions **MUST** strictly follow the design system:
+## Visual direction
 
-1. **Banned Fonts**: Do NOT import or use `Inter`, `Roboto`, `Arial`, or `Helvetica` for styling. 
-   - Use `Plus Jakarta Sans` (`var(--font-plus-jakarta)`) for body and interface elements.
-   - Use `Outfit` (`var(--font-outfit)`) for headings and sections.
-2. **Concentric Double-Bezel (Doppelrand)**: All major visual cards must follow this layout structure:
-   - *Outer Shell*: `bg-white/[0.01] border border-white/[0.05] p-1.5 rounded-[2rem]`
-   - *Inner Core*: `bg-[#07070a] border border-white/[0.03] p-8 rounded-[calc(2rem-6px)]`
-   - *Concentric Math*: Inner radius = `calc(Outer Radius - Padding)`.
-3. **Thin SVG Icons**:
-   - Set `strokeWidth={1.2}` or `strokeWidth={1}` on all Lucide React icons.
-   - Use custom thin SVG outlines for brand icons (LinkedIn, GitHub) in `Contact.tsx`.
-4. **Button-in-Button CTAs**:
-   - Buttons are fully rounded pills: `pl-6 pr-2 py-2 rounded-full`.
-   - Trailing icons must sit inside their own circular container: `w-8 h-8 rounded-full bg-white/10 flex items-center justify-center`.
-   - Use `ease-apple` transition: `cubic-bezier(0.16, 1, 0.3, 1)`.
-5. **No Hydration Mismatches**:
-   - If writing layout elements that can be modified by browser extensions or testing harnesses, attach the `suppressHydrationWarning` prop (e.g. to the `<html>` tag).
+- Editorial field-notes aesthetic
+- Warm paper, deep ink, and one signal-orange accent
+- Newsreader display type and Manrope body/interface type
+- Numbered section rail as the recurring visual system
+- Authentic portrait and project imagery
+- Mobile-first layouts with a compact numbered section index
 
----
+Avoid returning to the previous neon dashboard, glass-heavy bento, or generic AI-agency look.
 
-## 📁 Key File Map
+## Key files
 
-- **[siteContent.ts](file:///d:/AntigravityWorkspaces/stevenmoranocom/src/data/siteContent.ts)**: Central data configurations. **Modify this file first** to change text, lists, stats, or links.
-- **[globals.css](file:///d:/AntigravityWorkspaces/stevenmoranocom/src/app/globals.css)**: Custom keyframes, noise filters, layout easing.
-- **[layout.tsx](file:///d:/AntigravityWorkspaces/stevenmoranocom/src/app/layout.tsx)**: Font loader, noise backdrop, global HTML wrapper.
-- **[components/](file:///d:/AntigravityWorkspaces/stevenmoranocom/src/components/)**: React UI components folder.
+- `src/data/siteContent.ts`: content, evidence, projects, and links
+- `src/components/Portfolio.module.css`: layout and design system
+- `src/app/layout.tsx`: metadata and fonts
+- `src/app/page.tsx`: page composition and structured data
+- `documents/PERSONAL_SITE_REDESIGN.md`: approved strategy and acceptance criteria
+- `documents/ARCHITECTURE.md`: current technical architecture
+
+## Implementation rules
+
+- Read the relevant local Next.js 16 documentation before changing framework behavior.
+- Prefer Server Components and semantic HTML.
+- Keep navigation functional without JavaScript where possible.
+- Use custom thin SVG icons instead of adding an icon library.
+- Label concept visuals honestly.
+- Respect reduced-motion preferences.
+- Run lint, TypeScript, and the production build before pushing.

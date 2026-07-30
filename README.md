@@ -1,132 +1,91 @@
-# Steven Morano | Marketing Operations & AI Systems Consultant Website
+# Steven Morano — Personal Website
 
-A modern, premium, high-performance personal portfolio website for **Steven Morano**, representing his professional consulting services, work history, and technical experiments.
+The source for [stevenmorano.com](https://stevenmorano.com), Steven Morano's personal reputation, career, and project portfolio.
 
-The site is built as a static-ready Next.js application, optimized for visual excellence, layout responsiveness on high-resolution displays, SEO visibility, and client-side performance.
+This is intentionally different from Smart Marketing Digital. The site presents Steven as a marketing operations leader with strong technical fluency and a growing body of AI-assisted software work. It is designed for recruiters, hiring managers, collaborators, professional contacts, and anyone searching for Steven by name.
 
----
+## Positioning
 
-## 🛠️ Technology Stack
+- Marketing leadership comes first.
+- AI, software, and rapid learning are meaningful differentiators.
+- Independent consulting is presented honestly as a small practice, not a large active agency.
+- Projects demonstrate judgment and adaptability without positioning Steven as a traditional software engineer.
+- The primary action is to explore Steven's work and professional profiles, not book a sales call.
 
-- **Framework**: [Next.js 16+ (App Router)](https://nextjs.org/) & **React 19**
-- **Styling**: [Tailwind CSS v4.0](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/) (rendered with precision `strokeWidth={1.2}` or `strokeWidth={1.5}`)
-- **Fonts**:
-  - `Plus Jakarta Sans`: Modern geometric sans-serif for body copy and UI elements.
-  - `Outfit`: Bold display sans-serif for headlines and section indicators.
+The complete strategy and content rules live in [`documents/PERSONAL_SITE_REDESIGN.md`](documents/PERSONAL_SITE_REDESIGN.md).
 
----
+## Technology
 
-## 🎨 Visual Design Guidelines (Premium Agency-Grade Specs)
+- Next.js 16 App Router
+- React 19
+- TypeScript
+- CSS Modules and global CSS
+- `next/image` for optimized imagery
+- `next/font` with Manrope and Newsreader
+- Static metadata routes for robots, sitemap, manifest, icon, and Open Graph imagery
 
-The site strictly adheres to digital agency design principles:
-1. **OLED First Theme**: Deep `#030303` black body backdrop with soft blurred backing glow overlays and linear neon grids.
-2. **Double-Bezel (Doppelrand) Architecture**: Cards and panels are wrapped in concentric bezel boxes:
-   - *Outer Bezel*: `bg-white/[0.01] border border-white/[0.05] p-1.5 rounded-[2rem]`
-   - *Inner Core*: `bg-[#07070a] border border-white/[0.03] p-8 rounded-[calc(2rem-6px)]`
-   - *Concentric Math*: Inner radius = `calc(Outer Radius - Padding)`.
-3. **Button-in-Button CTAs**: Primary action buttons utilize a fully rounded capsule housing text and a separate, nested circular icon pill that animates independently.
-4. **CSS Noise Overlay**: A fixed, low-opacity grain structure is applied globally to establish physical paper texture.
-5. **Fluid Easing**: Custom transition curves mimic realistic physical weight and damping:
-   - `ease-[cubic-bezier(0.16,1,0.3,1)]`
+The page is composed entirely of React Server Components. Navigation works with ordinary anchor links and does not require client-side state.
 
----
+## Project structure
 
-## 📁 Project Structure
-
+```text
+public/
+  images/                  Portrait
+  projects/                Authentic project screenshots
+src/
+  app/
+    layout.tsx             Fonts, global metadata, and page shell
+    page.tsx               Homepage composition and JSON-LD
+    globals.css            Reset, design tokens, and global behavior
+    icon.svg               Site icon
+    manifest.ts            Web app metadata
+    opengraph-image.tsx    Generated social sharing image
+    robots.ts              robots.txt
+    sitemap.ts             sitemap.xml
+  components/
+    Navigation.tsx         Desktop and numbered mobile navigation
+    Hero.tsx               Identity and positioning
+    Proof.tsx              Career evidence
+    Experience.tsx         Capabilities and professional history
+    Projects.tsx           Featured and supporting builds
+    ProjectVisuals.tsx     Project screenshots and honest concept visuals
+    About.tsx              Personal story, technical origin, and community
+    Connect.tsx            Social, professional, and personal links
+    Footer.tsx             Site footer
+    Portfolio.module.css   Responsive editorial design system
+  data/
+    siteContent.ts         Central source for editable site content
 ```
-├── public/                  # Static assets
-└── src/
-    ├── app/
-    │   ├── globals.css      # Custom animations, bezel variables, and global classes
-    │   ├── layout.tsx       # Google Fonts loading, noise overlay, and SEO metadata
-    │   ├── page.tsx         # Page controller aggregating sections inside containers
-    │   ├── robots.ts        # Dynamic robots.txt generation
-    │   └── sitemap.ts       # Dynamic sitemap.xml generation
-    ├── components/          # Modular UI components
-    │   ├── Navbar.tsx       # Sticky floating glass nav with sliding highlights
-    │   ├── Hero.tsx         # Typography headline, location badges, and action CTAs
-    │   ├── About.tsx        # Personal narrative and systems connector SVG flowchart
-    │   ├── WhatIDo.tsx      # Bento grid for core business consulting services
-    │   ├── Experience.tsx   # Stat bento card and work history timeline
-    │   ├── Stack.tsx        # Consolidated tools & platforms categories grid
-    │   ├── Projects.tsx     # Selected SaaS/experiments bento cards and horizontal swipe carousel
-    │   ├── Contact.tsx      # Indented layout block with email, social, and booking buttons
-    │   └── Footer.tsx       # Brand signature, copyright, and metadata indicators
-    └── data/
-        └── siteContent.ts   # Centralized copy, experience data, stack categories, and links
-```
 
----
+## Editing content
 
-## ✏️ How to Edit Content
+Most text, roles, metrics, project descriptions, and links are centralized in [`src/data/siteContent.ts`](src/data/siteContent.ts).
 
-To modify the website text, statistics, software stack categories, or project links, you do **not** need to touch the layout components. All page content is centralized:
-- Edit [src/data/siteContent.ts](file:///d:/AntigravityWorkspaces/stevenmoranocom/src/data/siteContent.ts).
-- Save changes, and Next.js will automatically hot-reload the changes.
+Before publishing changes:
 
----
+- Keep every career metric defensible and connected to a real role.
+- Do not invent clients, testimonials, dashboards, or software capabilities.
+- Do not expose private repository URLs, hosting dashboards, or personal accounts.
+- Keep Home Management first and Mindful Eating second unless Steven changes that priority.
+- Preserve the distinction between this personal site and the sales-focused Smart Marketing Digital site.
 
-## 🚀 Running the Project
+## Local development
 
-### 1. Install Dependencies
 ```bash
 npm install
-```
-
-### 2. Run the Development Server
-The development server is configured to run on port **3001**:
-```bash
 npm run dev
 ```
-Open [http://localhost:3001](http://localhost:3001) in your browser.
 
-### 3. Production Build
-To check build optimization and compile static assets:
+Open [http://localhost:3000](http://localhost:3000).
+
+## Validation
+
+Run all checks before pushing:
+
 ```bash
+npm run lint
+npx tsc --noEmit
 npm run build
 ```
 
----
-
-## 🗺️ Roadmap & Current Progress
-
-### Phase 1: Core Layout & Content Setup (Completed)
-- [x] Next.js App Router & Tailwind CSS integration.
-- [x] Centralized typescript content schema in `siteContent.ts`.
-- [x] Full page section implementation matching consulting positioning.
-
-### Phase 2: Design Scaling & Spacing Tuning (Completed)
-- [x] Widened page container layouts to `max-w-6xl` (1152px) for widescreen readability.
-- [x] Scaled micro-font sizes up to `text-xs/sm` to ensure sharp legibility on 1080p and 1440p displays.
-- [x] Tightened vertical section padding and margins on mobile viewports.
-- [x] Refactored mobile services cards to stack cleanly and limit visible chips to top 3 items.
-- [x] Added swipe horizontal indicator to mobile projects carousel.
-- [x] Aligned timeline dots exactly with vertical guide lines.
-
-### Phase 3: Performance & SEO Optimizations (Completed)
-- [x] Converted Leaf components (Contact, Footer) to Server Components to trim client-side JS.
-- [x] Optimized Navbar scroll listeners with passive event listeners and `requestAnimationFrame` throttling.
-- [x] Implemented dynamic sitemap and robots.txt outputs.
-- [x] Updated SEO titles, descriptions, and OpenGraph social sharing tags.
-- [x] Integrated booking email fallback for Cal.com buttons.
-- [x] Removed unused components (`Personal.tsx`) and verified clean ESLint/TypeScript compilation.
-
-### Phase 4: SEO, Accessibility & UX Hardening (Completed)
-- [x] Consolidated duplicate responsive markup in `Projects.tsx` and `WhatIDo.tsx` into single mapped containers with responsive classes.
-- [x] Removed text-node duplicates in `Hero.tsx` and `Contact.tsx` for cleaner crawler indexability and SEO parsing.
-- [x] Added `aria-hidden` and `tabIndex` locks to the mobile header navigation menu inside `Navbar.tsx` to secure keyboard navigation pathways.
-- [x] Set `aria-hidden="true"` on the visual-only flowchart component in `About.tsx` to keep screen readers focused on semantic narrative content.
-- [x] Replaced the janky scroll-spy loop in `Navbar.tsx` with a native browser `IntersectionObserver` coupled with a click-scroll locking throttle ref to prevent highlight jumping.
-- [x] Reordered navigation links to match the exact visual layout order of sections on the website (About -> Services -> Experience -> Stack -> Projects -> Contact).
-
-### Phase 5: Mobile Safari (iOS) Performance Hardening (Completed)
-- [x] Implemented a custom `useMobileSafe` hook to conditionally bypass Framer Motion animations on mobile viewports and reduced-motion environments.
-- [x] Rendered all content sections as immediately visible with full opacity on mobile to prevent scrolling-induced blank sections.
-- [x] Restricted the CPU-heavy SVG turbulence noise filter to desktop viewports (`min-width: 1024px`) to remove redraw overhead.
-- [x] Removed composition-heavy backdrop-blur filters on massive outer panels and experience cards on mobile, replacing them with solid, opaque backgrounds.
-- [x] Cleaned up redundant `backdrop-blur-2xl` styling on the opaque mobile menu panel in `Navbar.tsx` to ensure smooth opening/closing transitions.
-- [x] Disabled the resource-heavy 3D perspective grid floor and all background blurred radial glow circles on mobile viewports.
-- [x] Restricted body background radial gradients and drop shadows (`shadow-lg`, `shadow-2xl`) to desktop screens, preventing GPU repaint cycles.
-
+The production build statically generates the homepage, Open Graph image, icon, manifest, robots file, and sitemap.

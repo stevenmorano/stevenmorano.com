@@ -1,41 +1,48 @@
-# ANTIGRAVITY.md — Developer Guidelines & Reference
+# Developer guide
 
-This guide helps Antigravity and developers build on, maintain, and check the code in this repository.
+## Commands
 
-## 🚀 Commands Reference
+```bash
+npm run dev
+npm run lint
+npx tsc --noEmit
+npm run build
+```
 
-- **Development Server**: `npm run dev` (Runs on port `3001` in this workspace)
-- **Compile Production Build**: `npm run build`
-- **Lint Code**: `npm run lint` (runs `eslint`)
+The development server uses Next.js's default port, `3000`, unless another port is supplied.
 
----
+## First files to edit
 
-## 🎨 Architectural Design Rules (Awwwards-Tier)
+- [`src/data/siteContent.ts`](../src/data/siteContent.ts): copy, metrics, roles, projects, and links
+- [`src/components/Portfolio.module.css`](../src/components/Portfolio.module.css): layout and visual system
+- [`src/app/layout.tsx`](../src/app/layout.tsx): site-wide metadata and fonts
+- [`src/app/page.tsx`](../src/app/page.tsx): page order and structured data
 
-All subsequent visual updates or page additions **MUST** strictly follow the design system:
+## Content rules
 
-1. **Banned Fonts**: Do NOT import or use `Inter`, `Roboto`, `Arial`, or `Helvetica` for styling. 
-   - Use `Plus Jakarta Sans` (`var(--font-plus-jakarta)`) for body and interface elements.
-   - Use `Outfit` (`var(--font-outfit)`) for headings and sections.
-2. **Concentric Double-Bezel (Doppelrand)**: All major visual cards must follow this layout structure:
-   - *Outer Shell*: `bg-white/[0.01] border border-white/[0.05] p-1.5 rounded-[2rem]`
-   - *Inner Core*: `bg-[#07070a] border border-white/[0.03] p-8 rounded-[calc(2rem-6px)]`
-   - *Concentric Math*: Inner radius = `calc(Outer Radius - Padding)`.
-3. **Thin SVG Icons**:
-   - Set `strokeWidth={1.2}` or `strokeWidth={1}` on all Lucide React icons.
-   - Use custom thin SVG outlines for brand icons (LinkedIn, GitHub) in `Contact.tsx`.
-4. **Button-in-Button CTAs**:
-   - Buttons are fully rounded pills: `pl-6 pr-2 py-2 rounded-full`.
-   - Trailing icons must sit inside their own circular container: `w-8 h-8 rounded-full bg-white/10 flex items-center justify-center`.
-   - Use `ease-apple` transition: `cubic-bezier(0.16, 1, 0.3, 1)`.
-5. **No Hydration Mismatches**:
-   - If writing layout elements that can be modified by browser extensions or testing harnesses, attach the `suppressHydrationWarning` prop (e.g. to the `<html>` tag).
+1. Treat this as Steven's personal reputation and career site, not a consulting landing page.
+2. Lead with marketing operations, leadership, growth, and execution.
+3. Present AI and software building as evidence of technical fluency and adaptability.
+4. Keep every metric, client reference, testimonial, and project status truthful.
+5. Never expose private repositories, private social profiles, or hosting/database dashboards.
+6. Keep Smart Marketing Digital and the ADHD community as secondary destinations.
+7. Keep Home Management first and Mindful Eating second unless Steven explicitly changes the order.
 
----
+## Design rules
 
-## 📁 Key File Map
+1. Preserve the warm-paper, deep-ink, signal-orange palette.
+2. Use Newsreader for editorial display type and Manrope for body/interface copy.
+3. Keep the numbered section rail coherent with navigation.
+4. Prefer authentic project screenshots. Label any invented visualization as a concept.
+5. Use thin custom SVG icons rather than adding a large icon dependency.
+6. Avoid generic dashboard cards, neon glows, glass-heavy interfaces, and sales-funnel language.
+7. Maintain strong mobile layouts at 390px and a useful intermediate layout around 768px.
 
-- **[siteContent.ts](file:///d:/AntigravityWorkspaces/stevenmoranocom/src/data/siteContent.ts)**: Central data configurations. **Modify this file first** to change text, lists, stats, or links.
-- **[globals.css](file:///d:/AntigravityWorkspaces/stevenmoranocom/src/app/globals.css)**: Custom keyframes, noise filters, layout easing.
-- **[layout.tsx](file:///d:/AntigravityWorkspaces/stevenmoranocom/src/app/layout.tsx)**: Font loader, noise backdrop, global HTML wrapper.
-- **[components/](file:///d:/AntigravityWorkspaces/stevenmoranocom/src/components/)**: React UI components folder.
+## Technical rules
+
+1. Read the relevant local Next.js 16 documentation before changing framework behavior.
+2. Prefer Server Components and ordinary HTML navigation.
+3. Keep client JavaScript out unless the interaction genuinely requires it.
+4. Respect `prefers-reduced-motion`.
+5. Use `next/image` for raster site assets.
+6. Run lint, TypeScript, and the production build before pushing.

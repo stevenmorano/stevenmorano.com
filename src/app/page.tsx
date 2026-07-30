@@ -1,57 +1,98 @@
-import React from "react";
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
 import About from "@/components/About";
-import WhatIDo from "@/components/WhatIDo";
-import Projects from "@/components/Projects";
+import Connect from "@/components/Connect";
 import Experience from "@/components/Experience";
-import Stack from "@/components/Stack";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import Navigation from "@/components/Navigation";
+import Projects from "@/components/Projects";
+import Proof from "@/components/Proof";
+import { siteContent } from "@/data/siteContent";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://stevenmorano.com/#website",
+      url: "https://stevenmorano.com/",
+      name: "Steven Morano",
+      description:
+        "The personal website of Steven Morano, a marketing operations leader and AI-savvy builder in Rye Brook, New York.",
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://stevenmorano.com/#profile",
+      url: "https://stevenmorano.com/",
+      name: "Steven Morano | Marketing Operations Leader",
+      isPartOf: {
+        "@id": "https://stevenmorano.com/#website",
+      },
+      mainEntity: {
+        "@id": "https://stevenmorano.com/#person",
+      },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "Person",
+      "@id": "https://stevenmorano.com/#person",
+      name: "Steven Morano",
+      url: "https://stevenmorano.com/",
+      image: "https://stevenmorano.com/images/steven-morano.png",
+      email: `mailto:${siteContent.identity.email}`,
+      jobTitle: "Marketing Operations Leader",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Rye Brook",
+        addressRegion: "NY",
+        addressCountry: "US",
+      },
+      knowsAbout: [
+        "Marketing operations",
+        "Marketing strategy",
+        "Customer relationship management",
+        "Marketing automation",
+        "Paid media",
+        "Ecommerce",
+        "Artificial intelligence",
+        "AI-assisted product development",
+      ],
+      sameAs: [
+        "https://www.linkedin.com/in/stevenmorano/",
+        "https://github.com/stevenmorano",
+        "https://x.com/SteveMorano",
+        "https://smart.stevenmorano.com/",
+        "https://www.skool.com/working-from-home-with-adhd-7671/",
+      ],
+    },
+  ],
+};
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col antialiased">
-      {/* Navigation */}
-      <Navbar />
-
-      {/* Main Content Sections */}
-      <main className="flex-1 pb-20">
-        {/* Hero Section */}
+    <>
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
+      <Navigation
+        email={siteContent.identity.email}
+        items={siteContent.navigation}
+      />
+      <main id="main-content">
         <Hero />
-
-        {/* Outer Grid/Container wrapping all panels */}
-        <div className="max-w-6xl mx-auto px-3 sm:px-6 relative z-10 space-y-8 sm:space-y-12">
-          {/* PANEL A: Core Profile */}
-          <div className="bg-[#050508] md:bg-[#050508]/60 md:backdrop-blur-md border border-white/[0.05] rounded-[2rem] md:rounded-[2.2rem] shadow-none md:shadow-2xl overflow-hidden divide-y divide-white/[0.05]">
-            {/* About Section & Flowchart widget */}
-            <About />
-
-            {/* Service Pillars Section */}
-            <WhatIDo />
-          </div>
-
-          {/* PANEL B: Professional Background */}
-          <div className="bg-[#050508] md:bg-[#050508]/60 md:backdrop-blur-md border border-white/[0.05] rounded-[2rem] md:rounded-[2.2rem] shadow-none md:shadow-2xl overflow-hidden divide-y divide-white/[0.05]">
-            {/* Work History Section */}
-            <Experience />
-
-            {/* Tools & Platforms Section */}
-            <Stack />
-          </div>
-
-          {/* PANEL C: Selected Projects & Experiments */}
-          <div className="bg-[#050508] md:bg-[#050508]/60 md:backdrop-blur-md border border-white/[0.05] rounded-[2rem] md:rounded-[2.2rem] shadow-none md:shadow-2xl overflow-hidden">
-            <Projects />
-          </div>
-
-          {/* Contact CTA Section */}
-          <Contact />
-        </div>
+        <Proof />
+        <Experience />
+        <Projects />
+        <About />
+        <Connect />
       </main>
-
-      {/* Footer Signature */}
       <Footer />
-    </div>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+        type="application/ld+json"
+      />
+    </>
   );
 }
