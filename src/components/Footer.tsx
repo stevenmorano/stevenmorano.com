@@ -6,7 +6,7 @@ export default function Footer() {
       <div className={styles.container}>
         <div>
           <span>Steven Morano</span>
-          <span>Marketing operations · AI-assisted systems · Useful software</span>
+          <span>Marketing operations / AI tools / Useful software</span>
         </div>
         <div>
           <span>Rye Brook, New York</span>

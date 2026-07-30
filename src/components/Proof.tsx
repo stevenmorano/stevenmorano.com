@@ -8,11 +8,10 @@ export default function Proof() {
       <div className={styles.proofShell}>
         <div className={styles.proofPanel}>
           <div className={styles.proofIntro}>
-            <p className={styles.eyebrow}>Career evidence</p>
-            <h2>Strategy is useful. Results make it credible.</h2>
+            <p className={styles.eyebrow}>A few numbers</p>
+            <h2>Results from my marketing career.</h2>
             <p>
-              Selected outcomes from full-time marketing roles - not fictional
-              counters, sample dashboards, or consulting projections.
+              These figures come from the full-time roles listed below.
             </p>
           </div>
 

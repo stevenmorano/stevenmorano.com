@@ -23,22 +23,12 @@ export type ExperienceItem = {
   highlight?: string;
 };
 
-export type ProjectVisual =
-  | "home-system"
-  | "mindful-eating"
-  | "threads-flow"
-  | "floorplan"
-  | "chatgpt-tool"
-  | "frame-preview";
-
 export type ProjectItem = {
   title: string;
   eyebrow: string;
   status: string;
   description: string;
-  learning: string;
   tags: string[];
-  visual: ProjectVisual;
   href?: string;
 };
 
@@ -53,11 +43,11 @@ export const siteContent = {
   identity: {
     name: "Steven Morano",
     location: "Rye Brook, New York",
-    availability: "Open to remote and hybrid marketing leadership roles",
-    headline: "Marketing operations leader who makes complex systems work.",
+    availability: "Open to remote and hybrid marketing roles",
+    headline: "Marketing is my career. Technology is how I work.",
     introduction:
-      "I have spent 12+ years building marketing programs, growth systems, customer journeys, and high-performing teams. I combine that experience with deep technical curiosity - using AI, automation, and software to turn messy problems into useful systems.",
-    signature: "Marketing first. Technically fluent. Constantly building.",
+      "I have spent more than a decade in digital marketing and marketing operations. I also use AI to build apps, test ideas, and solve problems that I used to leave sitting in a notebook.",
+    signature: "Marketing operations / AI tools / Useful software",
     email: "steven@stevenmorano.com",
     portrait: "/images/steven-morano.png",
   },
@@ -94,19 +84,19 @@ export const siteContent = {
       number: "01",
       title: "Marketing operations",
       description:
-        "CRM architecture, lifecycle automation, lead management, reporting, customer journeys, and the operating rhythm that keeps marketing and sales aligned.",
+        "CRM, lifecycle email, lead flow, reporting, automation, and the day-to-day systems that keep marketing and sales organized.",
     },
     {
       number: "02",
       title: "Growth and acquisition",
       description:
-        "Paid media, funnels, landing pages, ecommerce, creative testing, conversion strategy, and the analysis required to put budget behind what works.",
+        "Paid media, funnels, landing pages, ecommerce, creative testing, and figuring out where the budget is actually working.",
     },
     {
       number: "03",
-      title: "AI and practical systems",
+      title: "AI and software",
       description:
-        "Research, workflow design, rapid prototyping, lightweight apps, and a willingness to learn whatever software is needed to solve the real problem.",
+        "I use AI to research, prototype, automate repetitive work, and build small tools. I am not a traditional developer, but I am very comfortable learning software.",
     },
   ] satisfies Capability[],
   experience: [
@@ -154,95 +144,77 @@ export const siteContent = {
     featured: [
       {
         title: "Home Management",
-        eyebrow: "Primary build",
-        status: "Private - In development",
+        eyebrow: "Featured build",
+        status: "Private / In development",
         description:
-          "A home operating system for the maintenance, documents, equipment, recurring tasks, projects, and decisions that normally live across reminders, folders, and memory.",
-        learning:
-          "My largest product build - and the clearest example of how I take a complicated real-life system, map it, and turn it into software people can actually use.",
-        tags: ["Product systems", "TypeScript", "AI-assisted development"],
-        visual: "home-system",
+          "A home management app for keeping maintenance up to date in one place - basically a simple operating system for a house.",
+        tags: ["TypeScript", "Product design", "AI-assisted build"],
       },
       {
         title: "Mindful Eating",
-        eyebrow: "Second major build",
-        status: "Private - Active build",
+        eyebrow: "Featured build",
+        status: "Private / In development",
         description:
-          "A mobile-first craving-pause app that creates five useful minutes between an impulse and a decision through guided distractions, breathing, timers, and progress tracking.",
-        learning:
-          "Built to explore behavior design, mobile UX, local-first data, accessibility, gamification, and the difficult balance between helpful friction and user trust.",
-        tags: ["React", "Behavior design", "Mobile-first"],
-        visual: "mindful-eating",
+          "A mobile-first app that interrupts boredom or impulse eating with a five-minute activity, breathing exercises, and simple progress tracking.",
+        tags: ["React", "Mobile-first", "Local storage"],
       },
     ] satisfies ProjectItem[],
     supporting: [
       {
         title: "Threads Content Engine",
         eyebrow: "Marketing + AI",
-        status: "Public project",
+        status: "Public repository",
         description:
-          "An AI-assisted research and drafting workflow for Threads with a deliberate human approval step before anything is published.",
-        learning:
-          "A practical experiment in faster content operations without giving up judgment, voice, or quality control.",
-        tags: ["TypeScript", "Human-in-the-loop", "Content systems"],
-        visual: "threads-flow",
+          "A research and drafting tool for my Threads account. It can organize sources and generate drafts for review, but it does not publish or schedule posts.",
+        tags: ["Next.js", "Supabase", "Threads API", "OpenAI"],
         href: "https://github.com/stevenmorano/threads-content-engine",
       },
       {
         title: "Floorplan Digitizer",
         eyebrow: "Browser-native CAD",
-        status: "Public project",
+        status: "Public repository",
         description:
-          "A browser tool for tracing floorplans manually or with Gemini vision, including scaling, grid snapping, room blocks, and undo/redo.",
-        learning:
-          "Proof that I can learn a complex interaction model, break it into systems, and ship a working technical prototype.",
-        tags: ["React", "Gemini", "Canvas tools"],
-        visual: "floorplan",
+          "A browser-based CAD prototype for uploading a floorplan, setting its scale, drawing walls and rooms, and experimenting with Gemini-assisted tracing.",
+        tags: ["React", "Gemini", "Browser CAD"],
         href: "https://github.com/stevenmorano/floorplan-digitizer",
       },
       {
-        title: "ChatGPT History Tool",
-        eyebrow: "Small friction, solved",
-        status: "Public Chrome extension",
+        title: "ChatGPT Bulk Delete",
+        eyebrow: "Chrome extension",
+        status: "Public repository",
         description:
-          "A local-first extension for searching, filtering, and bulk-managing a large ChatGPT conversation history without sending private metadata elsewhere.",
-        learning:
-          "A focused utility born from a repetitive personal problem - the kind of small software fix I enjoy making.",
-        tags: ["JavaScript", "Chrome extension", "Local-first"],
-        visual: "chatgpt-tool",
+          "A Chrome extension for searching, filtering, and bulk-deleting a large ChatGPT conversation history. Its local database stays in the browser.",
+        tags: ["JavaScript", "Chrome extension", "IndexedDB"],
         href: "https://github.com/stevenmorano/ce-chatgpt-bulk-delete",
       },
       {
         title: "Print Frame Visualizer",
         eyebrow: "Useful visual tool",
-        status: "Public project",
+        status: "Public repository",
         description:
-          "A private, local-first way to preview print, mat, and frame combinations accurately before spending money on a finished piece.",
-        learning:
-          "An exercise in translating physical measurements, taste, and purchasing uncertainty into a simple visual interface.",
+          "A local-first tool for previewing print, mat, and frame combinations to scale before buying or ordering the finished piece.",
         tags: ["TypeScript", "Local-first", "Visualization"],
-        visual: "frame-preview",
         href: "https://github.com/stevenmorano/print-frame-visualizer",
       },
     ] satisfies ProjectItem[],
   },
   about: {
     lead:
-      "Give me a few days with a piece of software and I will know it inside out.",
+      "I have always been the person people call when technology stops cooperating.",
     paragraphs: [
-      "That has been the through-line in my career. I started in design engineering, became the person coworkers came to for software and computer problems, moved into digital marketing, and eventually found marketing operations - the place where strategy, technology, process, and people all have to work together.",
-      "AI changed what I could do with a long-running bank of ideas. I am still a marketer, not a traditional software engineer. But I can now research, prototype, test, and build useful tools much faster - while bringing the business judgment to know what should be built in the first place.",
-      "I like fixing the thing behind the thing: the CRM nobody trusts, the follow-up process that loses good leads, the software people work around, or the everyday problem that should have a better tool.",
+      "I am not an IT professional or a traditional software developer. I am just very comfortable with computers. If something breaks, I want to know why. If a program is confusing, I keep using it until it makes sense.",
+      "That habit has followed me through design engineering, digital marketing, ecommerce, paid media, CRM work, automation, and now AI-assisted software.",
+      "Before AI, most of my app ideas stayed in a notebook because I could not build them on my own. Now I work with tools such as Codex, Claude, and Gemini to prototype those ideas, test them, and keep learning.",
     ],
     origin: {
       title: "An engineering foundation",
       description:
-        "Before marketing, I designed complex mechanical systems at Bolt Technology and worked across engineering, manufacturing, software, IT, and business leadership. That background still shapes how I think: understand the system, find the constraint, and make it work better.",
+        "Before marketing, I was a design engineer at Bolt Technology. The job put me between engineering, manufacturing, software, IT, and business leadership. It is older experience, but it explains how I approach problems.",
     },
     community: {
       title: "Community building",
       description:
-        "I run ADHD Working From Home, a developing private community focused on digital organization, personal finance, practical AI tools, and accountability for adults who feel overwhelmed by the systems of everyday life.",
+        "I also run a small Skool community for adults with ADHD who work from home. It is evolving toward digital organization, personal finance, practical AI tools, and accountability.",
       href: "https://www.skool.com/working-from-home-with-adhd-7671/",
     },
     interests: [
@@ -261,25 +233,25 @@ export const siteContent = {
     primary: [
       {
         label: "LinkedIn",
-        description: "Career, experience, and professional updates",
+        description: "My professional background and updates",
         href: "https://www.linkedin.com/in/stevenmorano/",
         external: true,
       },
       {
         label: "GitHub",
-        description: "Public applications, extensions, and experiments",
+        description: "The public projects I am building",
         href: "https://github.com/stevenmorano",
         external: true,
       },
       {
         label: "X / Twitter",
-        description: "Technology, marketing, AI, and whatever I am learning",
+        description: "Technology, marketing, AI, and things I am learning",
         href: "https://x.com/SteveMorano",
         external: true,
       },
       {
         label: "Email",
-        description: "The simplest way to reach me directly",
+        description: "The easiest way to reach me directly",
         href: "mailto:steven@stevenmorano.com",
       },
     ] satisfies ProfileLink[],

@@ -27,7 +27,7 @@ export default function Navigation({ items, email }: NavigationProps) {
         </div>
 
         <a className={styles.navEmail} href={`mailto:${email}`}>
-          <span>Say hello</span>
+          <span>Email me</span>
           <span className={styles.navArrow}>
             <ArrowUpRightIcon />
           </span>

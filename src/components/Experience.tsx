@@ -6,16 +6,14 @@ export default function Experience() {
   return (
     <SectionFrame id="experience" label="The work" number="02">
       <div className={styles.sectionHeading}>
-        <p className={styles.eyebrow}>Experience and range</p>
+        <p className={styles.eyebrow}>Professional experience</p>
         <h2>
-          Marketing leadership,
-          <br />
-          built close to the work.
+          My background is in marketing.
+          <br /> Technology is how I work.
         </h2>
         <p>
-          I am most useful where strategy and execution meet: building the
-          operating system, understanding the numbers, helping the team, and
-          getting the actual work out the door.
+          I work best in roles where I can understand the strategy, improve the
+          systems behind it, and still stay close to the actual work.
         </p>
       </div>
 
@@ -56,8 +54,7 @@ export default function Experience() {
             <span>Earlier foundation</span>
             <p>
               Before marketing, I studied design engineering and worked as a
-              design engineer at Bolt Technology - bridging engineering,
-              manufacturing, software, IT, and business leadership.
+              design engineer at Bolt Technology.
             </p>
           </article>
         </div>

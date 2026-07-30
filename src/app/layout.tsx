@@ -1,22 +1,22 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, Newsreader } from "next/font/google";
+import { Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
   display: "swap",
 });
 
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
+const jetBrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   display: "swap",
 });
 
-const title = "Steven Morano | Marketing Operations Leader & AI-Savvy Builder";
+const title = "Steven Morano | Marketing Operations & Technology";
 const description =
-  "Steven Morano is a New York marketing operations leader with 12+ years across growth, paid media, CRM, ecommerce, automation, and AI-assisted products.";
+  "Steven Morano is a New York marketing operations leader who uses AI and software to build practical tools, improve systems, and test new ideas.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://stevenmorano.com"),
@@ -72,8 +72,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  colorScheme: "light",
-  themeColor: "#f1eee7",
+  colorScheme: "dark",
+  themeColor: "#05070b",
 };
 
 export default function RootLayout({
@@ -83,7 +83,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={`${manrope.variable} ${newsreader.variable}`}
+      className={`${geist.variable} ${jetBrainsMono.variable}`}
       lang="en"
     >
       <body>{children}</body>

@@ -10,11 +10,11 @@ export default function Connect() {
     <SectionFrame id="connect" label="Find me online" number="05">
       <div className={styles.connectShell}>
         <div className={styles.connectPanel}>
-          <p className={styles.eyebrow}>Let&apos;s connect</p>
-          <h2>Good work usually starts with a good conversation.</h2>
+          <p className={styles.eyebrow}>Links and contact</p>
+          <h2>Find me around the internet.</h2>
           <p className={styles.connectIntro}>
-            I am interested in thoughtful marketing teams, useful technology,
-            practical AI, and people who care about making systems work better.
+            LinkedIn is best for my professional background. GitHub is where my
+            public projects live. Email works too.
           </p>
 
           <a className={styles.emailLink} href={`mailto:${identity.email}`}>

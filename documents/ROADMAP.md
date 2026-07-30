@@ -5,11 +5,11 @@
 The July 2026 redesign is implemented:
 
 - [x] Repositioned the site from a consulting funnel to a personal reputation and career hub.
-- [x] Replaced the dark dashboard aesthetic with a warm editorial design.
+- [x] Established a dark, modern, technology-forward visual system.
 - [x] Put marketing operations and leadership before AI/software work.
 - [x] Added defensible career outcomes and a concise professional timeline.
 - [x] Featured Home Management first and Mindful Eating second.
-- [x] Added authentic visuals for public projects and an explicitly labeled concept for the private Home Management build.
+- [x] Replaced inaccurate project imagery with factual text-first project cards.
 - [x] Added LinkedIn, GitHub, X, email, Smart Marketing Digital, the ADHD community, Steve Labs, and the travel archive.
 - [x] Removed booking-focused calls to action and unsupported dashboard-style claims.
 - [x] Added canonical metadata, structured data, sitemap, robots, manifest, site icon, and a generated Open Graph image.
@@ -35,7 +35,7 @@ The July 2026 redesign is implemented:
 
 ### 3. Stronger project evidence
 
-- [ ] Replace the Home Management concept visual with an approved product screenshot when ready.
+- [ ] Add an approved Home Management screenshot only when it accurately represents the current product.
 - [ ] Add a publishable Mindful Eating project page or repository when appropriate.
 - [ ] Add short case-study pages only when there is enough real context, process, and evidence to justify them.
 - [ ] Keep private repositories private while describing the product problem and Steven's role.
@@ -48,7 +48,7 @@ The July 2026 redesign is implemented:
 
 ### 5. Reputation maintenance
 
-- [ ] Refresh project priorities and screenshots quarterly.
+- [ ] Refresh project priorities and descriptions quarterly.
 - [ ] Keep GitHub repository descriptions and profile biography consistent with this site.
 - [ ] Keep LinkedIn's headline, About section, dates, and domain link aligned.
 - [ ] Publish occasional useful material on marketing operations, practical AI, and problem-solving to build name-search authority over time.

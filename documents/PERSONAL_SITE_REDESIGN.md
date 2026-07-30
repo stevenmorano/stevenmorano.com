@@ -162,22 +162,21 @@ The travel blog may appear as a low-priority "Travel archive" link in the person
 
 ## 5. Visual Direction
 
-The approved direction is an editorial personal portfolio with technical precision.
+The approved direction is a dark, modern personal portfolio with technical precision.
 
 Visual principles:
 
-- Warm off-white or soft neutral page surfaces.
-- Deep ink or navy text and selected dark sections.
-- One restrained accent color, likely cobalt or burnt orange.
-- Large, characterful headings paired with a highly readable modern body typeface.
-- Crisp borders, clear grids, generous spacing, and strong project imagery.
-- A real professional portrait near the top.
+- Near-black and navy page surfaces.
+- Cool blue and cyan used as restrained signal colors.
+- Modern geometric typography with monospaced interface labels.
+- Crisp borders, clear grids, generous spacing, and text-first project cards.
+- A real professional portrait in the About section rather than the hero.
 - Subtle, purposeful motion that never delays content.
 - Strong hierarchy and short reading paths.
 
 Avoid:
 
-- Repeating Smart Marketing Digital's black-and-cyan AI dashboard aesthetic.
+- Repeating Smart Marketing Digital's sales-focused structure or animated AI dashboard motifs.
 - Glassmorphism-heavy dashboard cards.
 - Fake charts, fictional live counters, or decorative business metrics.
 - Generic AI-generated imagery.
@@ -185,7 +184,7 @@ Avoid:
 - Long walls of resume content.
 - Motion that hides content until scrolling or interferes with screenshots, indexing, or accessibility.
 
-The supplied close-cropped portrait is approved as the launch photo. A smart-casual portrait may replace it later but should not block launch.
+The supplied close-cropped portrait is approved for the About section. A smart-casual portrait may replace it later but should not block launch.
 
 ## 6. Relationship to Other Sites
 
@@ -342,11 +341,11 @@ The redesign is successful when:
 - The site is a durable personal reputation hub, not only an employment landing page.
 - The primary near-term outcome is a strong remote or hybrid marketing leadership role.
 - Marketing remains the central identity; AI and software building are differentiators.
-- The approved visual direction is editorial, personal, polished, and technically precise.
+- The approved visual direction is dark, modern, personal, and technically precise.
 - The complete core story will live on one concise homepage.
 - Steve Labs remains a separate experimental site.
 - Home Management is the primary featured app; Mindful Eating is second.
-- The site will use a real professional portrait.
+- The site will use a real professional portrait below the opening hero.
 - Projects will be manually curated.
 - The eight-page master resume will not be published.
 - Public contact email is `steven@stevenmorano.com`.

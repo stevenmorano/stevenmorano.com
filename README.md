@@ -21,7 +21,7 @@ The complete strategy and content rules live in [`documents/PERSONAL_SITE_REDESI
 - TypeScript
 - CSS Modules and global CSS
 - `next/image` for optimized imagery
-- `next/font` with Manrope and Newsreader
+- `next/font` with Geist and JetBrains Mono
 - Static metadata routes for robots, sitemap, manifest, icon, and Open Graph imagery
 
 The page is composed entirely of React Server Components. Navigation works with ordinary anchor links and does not require client-side state.
@@ -31,7 +31,7 @@ The page is composed entirely of React Server Components. Navigation works with 
 ```text
 public/
   images/                  Portrait
-  projects/                Authentic project screenshots
+  projects/                Legacy project captures retained for reference
 src/
   app/
     layout.tsx             Fonts, global metadata, and page shell
@@ -47,12 +47,11 @@ src/
     Hero.tsx               Identity and positioning
     Proof.tsx              Career evidence
     Experience.tsx         Capabilities and professional history
-    Projects.tsx           Featured and supporting builds
-    ProjectVisuals.tsx     Project screenshots and honest concept visuals
-    About.tsx              Personal story, technical origin, and community
+    Projects.tsx           Text-first featured and supporting builds
+    About.tsx              Portrait, personal story, technical origin, and community
     Connect.tsx            Social, professional, and personal links
     Footer.tsx             Site footer
-    Portfolio.module.css   Responsive editorial design system
+    Portfolio.module.css   Responsive dark product-studio design system
   data/
     siteContent.ts         Central source for editable site content
 ```

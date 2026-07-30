@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const alt =
-  "Steven Morano — Marketing operations leader and AI-savvy builder";
+  "Steven Morano — Marketing operations and technology";
 export const size = {
   width: 1200,
   height: 630,
@@ -14,10 +14,11 @@ export default function OpenGraphImage() {
       <div
         style={{
           alignItems: "stretch",
-          background: "#f1eee7",
-          color: "#121820",
+          background:
+            "radial-gradient(circle at 85% 0%, #152c54 0%, #05070b 42%)",
+          color: "#f3f7fb",
           display: "flex",
-          fontFamily: "Arial, sans-serif",
+          fontFamily: "sans-serif",
           height: "100%",
           padding: "54px",
           width: "100%",
@@ -25,7 +26,7 @@ export default function OpenGraphImage() {
       >
         <div
           style={{
-            border: "2px solid #121820",
+            border: "2px solid rgba(112, 167, 255, 0.28)",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
@@ -36,7 +37,7 @@ export default function OpenGraphImage() {
         >
           <div
             style={{
-              background: "#e85d2a",
+              background: "#57dcff",
               height: "10px",
               left: "54px",
               position: "absolute",
@@ -66,13 +67,13 @@ export default function OpenGraphImage() {
           >
             <div
               style={{
-                fontFamily: "Georgia, serif",
-                fontSize: 76,
-                letterSpacing: "-0.045em",
+                fontSize: 78,
+                fontWeight: 650,
+                letterSpacing: "-0.055em",
                 lineHeight: 0.98,
               }}
             >
-              Marketing operations leader who makes complex systems work.
+              Marketing is my career. Technology is how I work.
             </div>
           </div>
           <div
@@ -83,8 +84,8 @@ export default function OpenGraphImage() {
               justifyContent: "space-between",
             }}
           >
-            <span>Marketing first. Technically fluent. Constantly building.</span>
-            <span style={{ color: "#e85d2a", fontWeight: 800 }}>SM / 2026</span>
+            <span>Marketing operations / AI tools / Useful software</span>
+            <span style={{ color: "#57dcff", fontWeight: 800 }}>SM / 2026</span>
           </div>
         </div>
       </div>

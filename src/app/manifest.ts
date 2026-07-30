@@ -5,11 +5,11 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Steven Morano",
     short_name: "Steven Morano",
     description:
-      "Marketing operations leader, AI-savvy builder, and lifelong technologist.",
+      "The personal site of marketing operations leader Steven Morano.",
     start_url: "/",
     display: "standalone",
-    background_color: "#f1eee7",
-    theme_color: "#f1eee7",
+    background_color: "#05070b",
+    theme_color: "#05070b",
     icons: [
       {
         src: "/icon.svg",

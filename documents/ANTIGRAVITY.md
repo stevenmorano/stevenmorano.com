@@ -30,12 +30,12 @@ The development server uses Next.js's default port, `3000`, unless another port 
 
 ## Design rules
 
-1. Preserve the warm-paper, deep-ink, signal-orange palette.
-2. Use Newsreader for editorial display type and Manrope for body/interface copy.
+1. Preserve the near-black, navy, blue, and cyan palette.
+2. Use Geist for display/body type and JetBrains Mono for interface labels.
 3. Keep the numbered section rail coherent with navigation.
-4. Prefer authentic project screenshots. Label any invented visualization as a concept.
+4. Keep projects text-first unless Steven supplies or approves accurate screenshots.
 5. Use thin custom SVG icons rather than adding a large icon dependency.
-6. Avoid generic dashboard cards, neon glows, glass-heavy interfaces, and sales-funnel language.
+6. Use technical visual cues with restraint and avoid sales-funnel language.
 7. Maintain strong mobile layouts at 390px and a useful intermediate layout around 768px.
 
 ## Technical rules

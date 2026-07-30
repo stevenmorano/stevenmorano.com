@@ -15,7 +15,6 @@ flowchart TD
     Page --> About
     Page --> Connect
     Page --> Footer
-    Projects --> ProjectVisuals
     Content["siteContent.ts"] --> Hero
     Content --> Proof
     Content --> Experience
@@ -41,33 +40,31 @@ Layout components should not introduce unsupported claims. Private projects can 
 
 ## Design system
 
-The aesthetic is "editorial field notes":
+The aesthetic is "dark product studio":
 
-- Warm paper background
-- Deep ink text and selected dark panels
-- Restrained signal-orange accent
-- Newsreader for expressive editorial type
-- Manrope for interface and body text
-- Thin rules, numbered section rails, and restrained concentric borders
-- A real portrait and real project screenshots where public or available
+- Near-black page surfaces with restrained navy depth
+- Cool blue and cyan signal accents
+- Geist for display and body text
+- JetBrains Mono for labels, status, and section navigation
+- Thin rules, numbered section rails, and precise concentric borders
+- A real portrait in the About section
+- Text-first project cards with no invented product imagery
 
 The numbered section rail is the visual through-line. It should remain coherent when sections are reordered or added.
 
 The responsive layout is defined in [`src/components/Portfolio.module.css`](../src/components/Portfolio.module.css). Major breakpoints are:
 
-- `980px`: desktop navigation becomes the numbered index; complex grids simplify.
-- `767px`: the hero and project layouts stack for phones.
-- `390px`: the brand label collapses to the SM mark to preserve navigation space.
+- `1020px`: major desktop grids simplify.
+- `820px`: desktop navigation becomes the numbered index.
+- `680px`: layouts collapse to phone-sized single columns.
 
 Animations are CSS-only, limited to opacity and transform, and disabled when `prefers-reduced-motion` is enabled.
 
 ## Assets
 
 - Portrait: `public/images/steven-morano.png`
-- Project screenshots: `public/projects/`
-- Home Management is represented by a clearly labeled interface concept because the private product did not have a publishable screenshot available.
-
-Never present a concept visual as a live product screenshot.
+- Legacy project captures remain in `public/projects/` but are not rendered.
+- Project imagery should be added only when Steven supplies or approves an accurate screenshot.
 
 ## SEO architecture
 

@@ -17,7 +17,7 @@ const structuredData = {
       url: "https://stevenmorano.com/",
       name: "Steven Morano",
       description:
-        "The personal website of Steven Morano, a marketing operations leader and AI-savvy builder in Rye Brook, New York.",
+        "The personal website of Steven Morano, a marketing operations leader who uses AI and software to build practical tools.",
       inLanguage: "en-US",
     },
     {
