@@ -4,6 +4,13 @@ The source for [stevenmorano.com](https://stevenmorano.com), Steven Morano's per
 
 This is intentionally different from Smart Marketing Digital. The site presents Steven as a marketing operations leader with strong technical fluency and a growing body of AI-assisted software work. It is designed for recruiters, hiring managers, collaborators, professional contacts, and anyone searching for Steven by name.
 
+## Current status
+
+- The dark, technology-forward redesign is live on the production domain.
+- `main` is the production branch.
+- The live design release is commit `c8ca6de`.
+- Start with [`documents/NEXT_SESSION.md`](documents/NEXT_SESSION.md) before making the next round of changes.
+
 ## Positioning
 
 - Marketing leadership comes first.
@@ -88,3 +95,12 @@ npm run build
 ```
 
 The production build statically generates the homepage, Open Graph image, icon, manifest, robots file, and sitemap.
+
+## Documentation
+
+- [`documents/NEXT_SESSION.md`](documents/NEXT_SESSION.md) — current handoff, decisions to preserve, known caveat, and recommended next work
+- [`documents/PERSONAL_SITE_REDESIGN.md`](documents/PERSONAL_SITE_REDESIGN.md) — positioning and design strategy
+- [`documents/ARCHITECTURE.md`](documents/ARCHITECTURE.md) — implementation architecture
+- [`documents/ANTIGRAVITY.md`](documents/ANTIGRAVITY.md) — visual and content guardrails
+- [`documents/ROADMAP.md`](documents/ROADMAP.md) — prioritized follow-up work
+- [`documents/SEO_AUDIT_2026-07-29.md`](documents/SEO_AUDIT_2026-07-29.md) — dated technical SEO baseline with a current-state note

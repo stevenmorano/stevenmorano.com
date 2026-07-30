@@ -2,7 +2,7 @@
 
 ## Current state
 
-The July 2026 redesign is implemented:
+The July 2026 redesign and dark visual refinement are implemented and live:
 
 - [x] Repositioned the site from a consulting funnel to a personal reputation and career hub.
 - [x] Established a dark, modern, technology-forward visual system.
@@ -15,13 +15,13 @@ The July 2026 redesign is implemented:
 - [x] Added canonical metadata, structured data, sitemap, robots, manifest, site icon, and a generated Open Graph image.
 - [x] Verified responsive layouts at phone, tablet, and desktop sizes.
 - [x] Passed ESLint, TypeScript, and the production Next.js build.
+- [x] Deployed the approved build to `stevenmorano.com`.
+- [x] Verified the canonical HTTPS domain returns the current title and homepage.
 
 ## Near-term follow-up
 
-### 1. Launch and indexing
+### 1. Search indexing
 
-- [ ] Deploy the approved build to the production domain.
-- [ ] Verify the canonical HTTPS version of `stevenmorano.com`.
 - [ ] Add the site to Google Search Console and Bing Webmaster Tools.
 - [ ] Submit `/sitemap.xml`.
 - [ ] Request indexing for the homepage after launch.
@@ -35,7 +35,8 @@ The July 2026 redesign is implemented:
 
 ### 3. Stronger project evidence
 
-- [ ] Add an approved Home Management screenshot only when it accurately represents the current product.
+- [ ] Review every public project description against its repository or Steven's current description.
+- [ ] Add project screenshots only when Steven supplies or approves images that accurately represent the current product.
 - [ ] Add a publishable Mindful Eating project page or repository when appropriate.
 - [ ] Add short case-study pages only when there is enough real context, process, and evidence to justify them.
 - [ ] Keep private repositories private while describing the product problem and Steven's role.
@@ -52,6 +53,11 @@ The July 2026 redesign is implemented:
 - [ ] Keep GitHub repository descriptions and profile biography consistent with this site.
 - [ ] Keep LinkedIn's headline, About section, dates, and domain link aligned.
 - [ ] Publish occasional useful material on marketing operations, practical AI, and problem-solving to build name-search authority over time.
+
+### 6. Dependency maintenance
+
+- [ ] Recheck `npm audit` after future stable Next.js, ESLint, PostCSS, and Sharp releases.
+- [ ] Do not run `npm audit fix --force`; the current proposed force fixes introduce breaking or incompatible dependency changes.
 
 ## Explicit non-goals
 

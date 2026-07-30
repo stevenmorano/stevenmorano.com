@@ -22,7 +22,7 @@ The site is not primarily a consulting funnel, scheduling page, developer portfo
 
 The central professional story is:
 
-> Steven Morano is a marketing operations leader who makes complex systems work.
+> Marketing is Steven Morano's career. Technology is how he works.
 
 Supporting positioning:
 
@@ -60,7 +60,7 @@ Content:
 
 - Professional portrait.
 - Exact-name heading: "Steven Morano."
-- Positioning headline: "Marketing operations leader who makes complex systems work."
+- Positioning headline: "Marketing is my career. Technology is how I work."
 - Short introduction covering 12+ years of marketing experience and technical curiosity.
 - Supporting line: "Marketing first. Technically fluent. Constantly building."
 - Subtle location and availability note for New York-area hybrid or remote marketing leadership roles.
@@ -112,7 +112,7 @@ Project hierarchy:
 
 Every featured project should include:
 
-- A real screenshot or honest product visual.
+- A factual description and status, with an optional screenshot only when Steven supplies or approves one.
 - The practical problem or idea behind it.
 - What Steven built or is building.
 - How AI or software tools helped.
@@ -282,7 +282,7 @@ These owned-profile links are particularly important because they help search en
 
 The launch site should stay concise. Future search growth can come from a small number of genuinely useful additions:
 
-- Detailed project pages with original screenshots and explanations.
+- Detailed project pages with factual explanations and optional approved screenshots.
 - Occasional writing about marketing operations, AI-assisted workflows, software learning, or systems building.
 - A curated travel or personal story if it supports the broader identity.
 - Updates when major projects ship.
